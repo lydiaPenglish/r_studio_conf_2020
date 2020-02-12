@@ -1,0 +1,42 @@
+@import url(https://fonts.googleapis.com/css?family=PT+Sans&display=swap);
+
+body {
+  font-family: 'PT Sans', 'Droid Serif', 'Palatino Linotype', 'Book Antiqua', 'Palatino', 'Microsoft YaHei', sans-serif;
+}
+
+a, a > code {
+  color:#046C9A;
+  text-decoration: none;
+}
+
+.remark-code, .remark-inline-code { font-family: 'Fira Code', 'Source Code Pro', 'Lucida Console', Monaco, monospace; }
+
+.remark-slide-content{
+  color: #24281A;
+  font-weight: 300;
+}
+
+.small{ font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace; }
+
+.inverse{
+  background-size: cover;
+  background-color: #24281A;
+  color: #FAEFD1;
+  text-shadow: none;
+  font-weight:bold;
+}
+
+.inverse h1, .inverse h2, .inverse h3{
+  color: #CCC591;
+  font-weight: 800;
+}
+
+.large{ font-size: 175% } 
+.medium{ font-size: 150% } 
+
+.title-slide .remark-slide-number{
+  display: none;
+}
+
+
+ 

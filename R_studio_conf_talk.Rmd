@@ -1,0 +1,136 @@
+---
+title: "R Studio Conference 2020"
+author: "Lydia English and Gina Nichols"
+date: "February 21, 2020"
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["default", "theme.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class:inverse, center
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+library(tidyverse)
+```
+
+
+# RStudio Conference 2020
+
+### January 27-30 San Francisco, CA
+
+---
+
+#Conference takeaways 
+
+--
+### - 2200+ attendees
+
+--
+### - Very welcoming community
+
+--
+### - Didn't feel like a n00b! 
+
+
+---
+background-image: url(usethis_hex.png)
+background-position: 90% 10%
+
+#2-day workshop 
+## My first R package 
+
+<br>
+
+.medium[**Takeaway**: Packages are MUCH easier to make than you might think]
+
+Start with a data package for your research
+
+---
+
+#Keynote: Rstudio as a b-corp
+
+---
+background-image: url(reprex_hex.png)
+background-position: 90% 10%
+
+# Keynote: Jenny Bryan
+### Debugging code 
+
+.medium[1. Restart your R session! 
+     - Don't save your R history/data
+2. Use the debugging functions
+3. Make a reprex]
+
+---
+background-image: url(reprex_hex.png)
+background-position: 90% 10%
+
+.large[Reprex = **Rep**roducible **ex**ample]
+
+Use small, simple, built-in, data 
+
+(ex: ggplot2::mtcars or dplyr::startwars)
+
+`library(reprex)`
+
+
+---
+
+#Flipbookr
+
+`devtools::install_github("EvaMaeRey/flipbookr")`
+
+---
+class:center
+
+# New font you didn't know you needed: Fira code
+
+
+`<-`    `<<-`    `==`    `<=`    `>=`    `!=`
+
+vs. 
+
+.small[<-  <<-   ==   <=   >=   !=]
+
+
+
+
+###[Very easy to download](https://github.com/tonsky/FiraCode)
+
+---
+class:center
+
+<img src="fira_code_web.PNG" style="width: 50%" />
+
+---
+
+#Styling Shiny Apps
+
+
+---
+
+#ggtext package
+
+`devtools::install_github("wilkelab/ggtext")`   
+
+---
+
+# Cite the tidyverse!
+
+```{r, results = 'asis'}
+citation("tidyverse")
+```
+
+---
+
+Other, misc things? 
+
+- Pins package
+
+---

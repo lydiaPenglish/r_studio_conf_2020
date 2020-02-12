@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>R Studio Conference 2020</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Lydia English and Gina Nichols" />
+    <meta name="date" content="2020-02-21" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class:inverse, center
+
+
+
+
+# RStudio Conference 2020
+
+### January 27-30 San Francisco, CA
+
+---
+
+#Conference takeaways 
+
+--
+### - 2200+ attendees
+
+--
+### - Very welcoming community
+
+--
+### - Didn't feel like a n00b! 
+
+
+---
+background-image: url(usethis_hex.png)
+background-position: 90% 10%
+
+#2-day workshop 
+## My first R package 
+
+&lt;br&gt;
+
+.medium[**Takeaway**: Packages are MUCH easier to make than you might think]
+
+Start with a data package for your research
+
+---
+
+#Keynote: Rstudio as a b-corp
+
+---
+background-image: url(reprex_hex.png)
+background-position: 90% 10%
+
+# Keynote: Jenny Bryan
+### Debugging code 
+
+.medium[1. Restart your R session! 
+     - Don't save your R history/data
+2. Use the debugging functions
+3. Make a reprex]
+
+---
+background-image: url(reprex_hex.png)
+background-position: 90% 10%
+
+.large[Reprex = **Rep**roducible **ex**ample]
+
+Use small, simple, built-in, data 
+
+(ex: ggplot2::mtcars or dplyr::startwars)
+
+`library(reprex)`
+
+
+---
+
+#Flipbookr
+
+`devtools::install_github("EvaMaeRey/flipbookr")`
+
+---
+class:center
+
+# New font you didn't know you needed: Fira code
+
+
+`&lt;-`    `&lt;&lt;-`    `==`    `&lt;=`    `&gt;=`    `!=`
+
+vs. 
+
+.small[&lt;-  &lt;&lt;-   ==   &lt;=   &gt;=   !=]
+
+
+
+
+###[Very easy to download](https://github.com/tonsky/FiraCode)
+
+---
+class:center
+
+&lt;img src="fira_code_web.PNG" style="width: 60%" /&gt;
+
+---
+
+#Styling Shiny Apps
+
+
+---
+
+#ggtext package
+
+`devtools::install_github("wilkelab/ggtext")`   
+
+---
+
+# Cite the tidyverse!
+
+
+```r
+citation("tidyverse")
+```
+
+
+  Wickham et al., (2019). Welcome to the tidyverse. Journal of Open
+  Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
+
+A BibTeX entry for LaTeX users is
+
+  @Article{,
+    title = {Welcome to the {tidyverse}},
+    author = {Hadley Wickham and Mara Averick and Jennifer Bryan and Winston Chang and Lucy D'Agostino McGowan and Romain François and Garrett Grolemund and Alex Hayes and Lionel Henry and Jim Hester and Max Kuhn and Thomas Lin Pedersen and Evan Miller and Stephan Milton Bache and Kirill Müller and Jeroen Ooms and David Robinson and Dana Paige Seidel and Vitalie Spinu and Kohske Takahashi and Davis Vaughan and Claus Wilke and Kara Woo and Hiroaki Yutani},
+    year = {2019},
+    journal = {Journal of Open Source Software},
+    volume = {4},
+    number = {43},
+    pages = {1686},
+    doi = {10.21105/joss.01686},
+  }
+
+---
+
+Other, misc things? 
+
+- Pins package
+
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
