@@ -17,6 +17,7 @@ class:inverse, center
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 library(tidyverse)
+theme_set(theme_bw())
 ```
 
 
@@ -49,22 +50,47 @@ background-position: 90% 10%
 
 .medium[**Takeaway**: Packages are MUCH easier to make than you might think]
 
+--
+
 Start with a data package for your research
 
 ---
 
-#Keynote: Rstudio as a b-corp
+#Keynote 1: Rstudio is now a B Corporation 
+
+--
+
+- .medium[Open source software ("Free" - no cost but ALSO no restrictions)]
+
+--
+
+- .medium[How to fund open source for resiliency and longevity?]
+
+--
+
+- .medium["Virtuous cycle" - balance between commercial ("Enterprise Products") and open source tools.] 
+
+--
+
+- .medium[BUT! Corporations are inherently not trustworthy...]
+
+--
+
+- Not planning on selling the company 
+
 
 ---
 background-image: url(reprex_hex.png)
 background-position: 90% 10%
 
-# Keynote: Jenny Bryan
+# Keynote 3: Jenny Bryan
 ### Debugging code 
 
 .medium[1. Restart your R session! 
      - Don't save your R history/data
+     
 2. Use the debugging functions
+
 3. Make a reprex]
 
 ---
@@ -73,9 +99,19 @@ background-position: 90% 10%
 
 .large[Reprex = **Rep**roducible **ex**ample]
 
-Use small, simple, built-in, data 
+<br>
 
-(ex: ggplot2::mtcars or dplyr::startwars)
+.medium[Use small, simple, built-in, data] 
+
+(ex: ggplot2::mtcars or dplyr::starwars)
+
+--
+
+<br>
+
+.medium[Making a reprex is both an art and a science]
+
+--
 
 `library(reprex)`
 
@@ -110,15 +146,75 @@ class:center
 
 ---
 
-#Styling Shiny Apps
+#Styling Shiny Apps 
+### with Sass and Bootstrap 4
 
 
 ---
 
-#ggtext package
+##ggtext package
 
 `devtools::install_github("wilkelab/ggtext")`   
 
+--
+
+.medium[- Allows one to use "rich text" in ggplot]
+
+--
+
+.medium[- NB: must download *development* version of ggplot2]
+
+`devtools::install_github("tidyverse/ggplot2")`   
+
+---
+
+##ggtext package
+
+```{r}
+library(glue)
+
+iris_subset <- iris %>%
+  group_by(Species) %>%
+  summarize(avg_Sepal_Length = mean(Sepal.Length)) %>%
+  mutate(Species = glue("*Iris {Species}*"),
+         Color = c("#66C2A5", "#FC8D63", "#8DA0CB")) 
+
+iris_subset
+```
+
+---
+##ggtext package
+.tinyer[
+```{r, fig.height=4}
+library(ggtext)
+
+iris_subset %>%
+  ggplot(aes(Species, avg_Sepal_Length))+
+  geom_col(aes(fill = Color))+
+  scale_fill_identity()+
+  labs(x = NULL,
+       y = "Average Sepal Length")+
+  theme(axis.text.x = element_markdown(size = 14))
+```
+]
+---
+##ggtext package
+
+.tinyer[
+```{r, fig.height=4}
+library(glue)
+library(ggtext)
+
+iris_subset %>%
+  mutate(color_id = glue("<B<i style = 'color:{Color}'>{Species}</i></B>")) %>%
+  ggplot(aes(color_id, avg_Sepal_Length))+
+  geom_col(aes(fill = Color))+
+  scale_fill_identity()+
+  labs(x = NULL,
+       y = "Average Sepal Length")+
+  theme(axis.text.x = element_markdown(size = 14))
+```
+]
 ---
 
 # Cite the tidyverse!

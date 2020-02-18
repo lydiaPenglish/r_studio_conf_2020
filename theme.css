@@ -33,6 +33,9 @@ a, a > code {
 
 .large{ font-size: 175% } 
 .medium{ font-size: 150% } 
+.tinyer .remark-code {
+  font-size: 50%;
+}
 
 .title-slide .remark-slide-number{
   display: none;
