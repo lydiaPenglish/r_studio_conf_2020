@@ -223,10 +223,3 @@ iris_subset %>%
 citation("tidyverse")
 ```
 
----
-
-Other, misc things? 
-
-- Pins package
-
----
