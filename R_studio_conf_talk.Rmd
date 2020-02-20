@@ -122,6 +122,56 @@ background-position: 90% 10%
 
 `devtools::install_github("EvaMaeRey/flipbookr")`
 
+```{r, cache = FALSE, include = FALSE}
+devtools::install_github("vanichols/rgronomists")
+library(flipbookr)
+library(tidyverse)
+library(lubridate)
+library(rgronomists)
+
+wea_ames_30yrs <- as_tibble(wea_ames_30yrs)
+wea_sum <- wea_ames_30yrs %>%
+  select(station_name, 
+         day, 
+         precip) %>% 
+  mutate(year_id = year(day)) %>% 
+  group_by(year_id) %>% 
+  summarise(totp = sum(precip))
+```
+
+---
+
+`r chunk_reveal("sumex", break_type = "auto")`
+
+```{r sumex, include = FALSE, echo = FALSE}
+wea_ames_30yrs %>%
+  select(station_name, 
+         day,
+         precip) %>% 
+  mutate(year_id = year(day)) %>% 
+  group_by(year_id) %>% 
+  summarise(totp = sum(precip))
+```
+
+
+---
+
+`r chunk_reveal("wea", break_type = "auto")`
+
+```{r wea, include = FALSE, echo = FALSE}
+ wea_sum %>% 
+  ggplot() +
+  aes(x = year_id) +
+  aes(y = totp) + 
+  geom_point(
+    color = "blue" 
+    ) +
+  geom_col(
+    fill = "red" 
+    )
+```
+
+
 ---
 class:center
 
@@ -227,6 +277,8 @@ citation("tidyverse")
 
 Other, misc things? 
 
-- Pins package
+- .medium[Pins package]
+- .medium[renv package] creates a mini-library for each project so you can keep version 0.2.0 of vctrs]
+- .medium[*instant eyedropper* browser extension] lets you steal colors from webpages
 
 ---

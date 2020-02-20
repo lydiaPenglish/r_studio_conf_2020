@@ -117,6 +117,286 @@ background-position: 90% 10%
 
 `devtools::install_github("EvaMaeRey/flipbookr")`
 
+
+
+---
+
+class: split-40
+count: false
+.column[.content[
+
+```r
+*wea_ames_30yrs
+```
+]]
+.column[.content[
+
+```
+## # A tibble: 10,957 x 10
+##    station station_name   lat   lon day          doy  high   low precip
+##    &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1 IA0200  AMES-8-WSW    42.0 -93.8 1990-01-01     1    31     8 0.0001
+##  2 IA0200  AMES-8-WSW    42.0 -93.8 1990-01-02     2    46    15 0     
+##  3 IA0200  AMES-8-WSW    42.0 -93.8 1990-01-03     3    45    25 0     
+##  4 IA0200  AMES-8-WSW    42.0 -93.8 1990-01-04     4    40    20 0.0001
+##  5 IA0200  AMES-8-WSW    42.0 -93.8 1990-01-05     5    44    13 0     
+##  6 IA0200  AMES-8-WSW    42.0 -93.8 1990-01-06     6    40    14 0     
+##  7 IA0200  AMES-8-WSW    42.0 -93.8 1990-01-07     7    49    24 0     
+##  8 IA0200  AMES-8-WSW    42.0 -93.8 1990-01-08     8    50    24 0.0001
+##  9 IA0200  AMES-8-WSW    42.0 -93.8 1990-01-09     9    38    31 0.0001
+## 10 IA0200  AMES-8-WSW    42.0 -93.8 1990-01-10    10    47    19 0     
+## # ... with 10,947 more rows, and 1 more variable: merra_srad &lt;dbl&gt;
+```
+]]
+---
+class: split-40
+count: false
+.column[.content[
+
+```r
+wea_ames_30yrs %&gt;%  
+* select(station_name,
+*        day,
+*        precip)
+```
+]]
+.column[.content[
+
+```
+## # A tibble: 10,957 x 3
+##    station_name day        precip
+##    &lt;chr&gt;        &lt;date&gt;      &lt;dbl&gt;
+##  1 AMES-8-WSW   1990-01-01 0.0001
+##  2 AMES-8-WSW   1990-01-02 0     
+##  3 AMES-8-WSW   1990-01-03 0     
+##  4 AMES-8-WSW   1990-01-04 0.0001
+##  5 AMES-8-WSW   1990-01-05 0     
+##  6 AMES-8-WSW   1990-01-06 0     
+##  7 AMES-8-WSW   1990-01-07 0     
+##  8 AMES-8-WSW   1990-01-08 0.0001
+##  9 AMES-8-WSW   1990-01-09 0.0001
+## 10 AMES-8-WSW   1990-01-10 0     
+## # ... with 10,947 more rows
+```
+]]
+---
+class: split-40
+count: false
+.column[.content[
+
+```r
+wea_ames_30yrs %&gt;%  
+  select(station_name,  
+         day,  
+         precip) %&gt;%  
+* mutate(year_id = year(day))
+```
+]]
+.column[.content[
+
+```
+## # A tibble: 10,957 x 4
+##    station_name day        precip year_id
+##    &lt;chr&gt;        &lt;date&gt;      &lt;dbl&gt;   &lt;dbl&gt;
+##  1 AMES-8-WSW   1990-01-01 0.0001    1990
+##  2 AMES-8-WSW   1990-01-02 0         1990
+##  3 AMES-8-WSW   1990-01-03 0         1990
+##  4 AMES-8-WSW   1990-01-04 0.0001    1990
+##  5 AMES-8-WSW   1990-01-05 0         1990
+##  6 AMES-8-WSW   1990-01-06 0         1990
+##  7 AMES-8-WSW   1990-01-07 0         1990
+##  8 AMES-8-WSW   1990-01-08 0.0001    1990
+##  9 AMES-8-WSW   1990-01-09 0.0001    1990
+## 10 AMES-8-WSW   1990-01-10 0         1990
+## # ... with 10,947 more rows
+```
+]]
+---
+class: split-40
+count: false
+.column[.content[
+
+```r
+wea_ames_30yrs %&gt;%  
+  select(station_name,  
+         day,  
+         precip) %&gt;%  
+  mutate(year_id = year(day)) %&gt;%  
+* group_by(year_id)
+```
+]]
+.column[.content[
+
+```
+## # A tibble: 10,957 x 4
+## # Groups:   year_id [30]
+##    station_name day        precip year_id
+##    &lt;chr&gt;        &lt;date&gt;      &lt;dbl&gt;   &lt;dbl&gt;
+##  1 AMES-8-WSW   1990-01-01 0.0001    1990
+##  2 AMES-8-WSW   1990-01-02 0         1990
+##  3 AMES-8-WSW   1990-01-03 0         1990
+##  4 AMES-8-WSW   1990-01-04 0.0001    1990
+##  5 AMES-8-WSW   1990-01-05 0         1990
+##  6 AMES-8-WSW   1990-01-06 0         1990
+##  7 AMES-8-WSW   1990-01-07 0         1990
+##  8 AMES-8-WSW   1990-01-08 0.0001    1990
+##  9 AMES-8-WSW   1990-01-09 0.0001    1990
+## 10 AMES-8-WSW   1990-01-10 0         1990
+## # ... with 10,947 more rows
+```
+]]
+---
+class: split-40
+count: false
+.column[.content[
+
+```r
+wea_ames_30yrs %&gt;%  
+  select(station_name,  
+         day,  
+         precip) %&gt;%  
+  mutate(year_id = year(day)) %&gt;%  
+  group_by(year_id) %&gt;%  
+* summarise(totp = sum(precip))
+```
+]]
+.column[.content[
+
+```
+## # A tibble: 30 x 2
+##    year_id  totp
+##      &lt;dbl&gt; &lt;dbl&gt;
+##  1    1990  44.3
+##  2    1991  40.0
+##  3    1992  34.2
+##  4    1993  56.4
+##  5    1994  28.3
+##  6    1995  28.7
+##  7    1996  36.8
+##  8    1997  26.3
+##  9    1998  35.0
+## 10    1999  40.1
+## # ... with 20 more rows
+```
+]]
+
+
+
+
+---
+
+class: split-40
+count: false
+.column[.content[
+
+```r
+*wea_sum
+```
+]]
+.column[.content[
+
+```
+## # A tibble: 30 x 2
+##    year_id  totp
+##      &lt;dbl&gt; &lt;dbl&gt;
+##  1    1990  44.3
+##  2    1991  40.0
+##  3    1992  34.2
+##  4    1993  56.4
+##  5    1994  28.3
+##  6    1995  28.7
+##  7    1996  36.8
+##  8    1997  26.3
+##  9    1998  35.0
+## 10    1999  40.1
+## # ... with 20 more rows
+```
+]]
+---
+class: split-40
+count: false
+.column[.content[
+
+```r
+ wea_sum %&gt;%  
+* ggplot()
+```
+]]
+.column[.content[
+![](R_studio_conf_talk_files/figure-html/wea_auto_2_output-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+.column[.content[
+
+```r
+ wea_sum %&gt;%  
+  ggplot() +  
+* aes(x = year_id)
+```
+]]
+.column[.content[
+![](R_studio_conf_talk_files/figure-html/wea_auto_3_output-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+.column[.content[
+
+```r
+ wea_sum %&gt;%  
+  ggplot() +  
+  aes(x = year_id) +  
+* aes(y = totp)
+```
+]]
+.column[.content[
+![](R_studio_conf_talk_files/figure-html/wea_auto_4_output-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+.column[.content[
+
+```r
+ wea_sum %&gt;%  
+  ggplot() +  
+  aes(x = year_id) +  
+  aes(y = totp) +  
+* geom_point(
+*   color = "blue"
+*   )
+```
+]]
+.column[.content[
+![](R_studio_conf_talk_files/figure-html/wea_auto_5_output-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+.column[.content[
+
+```r
+ wea_sum %&gt;%  
+  ggplot() +  
+  aes(x = year_id) +  
+  aes(y = totp) +  
+  geom_point(  
+    color = "blue"  
+    ) +  
+* geom_col(
+*   fill = "red"
+*   )
+```
+]]
+.column[.content[
+![](R_studio_conf_talk_files/figure-html/wea_auto_6_output-1.png)&lt;!-- --&gt;
+]]
+
+
+
+
 ---
 class:center
 
@@ -203,7 +483,7 @@ iris_subset %&gt;%
   theme(axis.text.x = element_markdown(size = 14))
 ```
 
-![](R_studio_conf_talk_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+![](R_studio_conf_talk_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
 ]
 ---
 ##ggtext package
@@ -224,7 +504,7 @@ iris_subset %&gt;%
   theme(axis.text.x = element_markdown(size = 14))
 ```
 
-![](R_studio_conf_talk_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+![](R_studio_conf_talk_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
 ]
 ---
 
@@ -236,8 +516,8 @@ citation("tidyverse")
 ```
 
 
-  Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686,
-  https://doi.org/10.21105/joss.01686
+  Wickham et al., (2019). Welcome to the tidyverse. Journal of Open
+  Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
 
 A BibTeX entry for LaTeX users is
 
@@ -256,7 +536,9 @@ A BibTeX entry for LaTeX users is
 
 Other, misc things? 
 
-- Pins package
+- .medium[Pins package]
+- .medium[renv package] creates a mini-library for each project so you can keep version 0.2.0 of vctrs]
+- .medium[*instant eyedropper* browser extension] lets you steal colors from webpages
 
 ---
     </textarea>
