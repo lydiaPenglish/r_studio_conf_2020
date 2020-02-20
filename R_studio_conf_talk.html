@@ -47,7 +47,9 @@ background-position: 90% 10%
 
 --
 
-Start with a data package for your research
+.medium[Start with a data package for your research]
+
+[Use this book!](http://r-pkgs.had.co.nz/)
 
 ---
 
@@ -98,7 +100,7 @@ background-position: 90% 10%
 
 .medium[Use small, simple, built-in, data] 
 
-(ex: ggplot2::mtcars or dplyr::starwars)
+(ex: datasets::mtcars or dplyr::starwars)
 
 --
 
@@ -141,8 +143,50 @@ class:center
 
 ---
 
-#Styling Shiny Apps 
-### with Sass and Bootstrap 4
+##Styling Shiny Apps 
+
+#### The defaults: 
+
+--
+
+.cntr[`shiny::runExample("04_mpg")`]
+
+&lt;img src="shiny_examples.PNG" style="width: 80%" /&gt;
+
+---
+## Styling Shiny Apps 
+
+- Ways to currently style a shiny app:
+
+.cntr[`install.packages("shinythemes"`)
+
+[themes website](https://rstudio.github.io/shinythemes/)] 
+
+--
+
+- Not very customizable...
+
+- What if you want a specific word to be a specific color/font..? 
+
+---
+
+## Themes are powered via Bootstrap - "open sourced CSS framework"
+
+--
+
+- .medium[Easily customizable...by people who make websites.]
+
+--
+
+- .medium[Enter: the bootstrap lib package]
+
+.cntr[`devtools::install_github("rstudio/bootstraplib")`]
+
+--
+
+- .medium[Can use in Markdown AND in Shiny!] 
+
+.cntr[[vignette](https://rstudio.github.io/bootstraplib/index.html)]
 
 
 ---
@@ -251,14 +295,6 @@ A BibTeX entry for LaTeX users is
     pages = {1686},
     doi = {10.21105/joss.01686},
   }
-
----
-
-Other, misc things? 
-
-- Pins package
-
----
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
