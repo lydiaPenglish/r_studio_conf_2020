@@ -317,7 +317,6 @@ iris_subset %>%
 citation("tidyverse")
 ```
 
-<<<<<<< HEAD
 ---
 
 Other, misc things? 
@@ -327,5 +326,4 @@ Other, misc things?
 - .medium[*instant eyedropper* browser extension] lets you steal colors from webpages
 
 ---
-=======
->>>>>>> master
+
